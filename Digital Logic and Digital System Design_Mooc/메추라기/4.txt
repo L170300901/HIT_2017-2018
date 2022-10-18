@@ -1,0 +1,25 @@
+module x4_sim ;    
+     reg clk, Rst,load,en;    
+     reg [3:0] din;  
+     wire [3:0] dout_save;  
+     wire [3:0] dout; 
+     x4 x1(.clk(clk),.din(din),.dout(dout),.dout_save(dout_save),.Rst(Rst),.load(load),.en(en));     
+    always    
+        begin    
+         #5 clk = ~clk; 
+         #10 load = ~load;
+         #20 en = ~en;
+         #100 Rst= ~Rst;
+         end     
+     initial    
+  
+        begin    
+  
+            clk = 1'b0;   
+            Rst = 1'b0; 
+             load = 1'b0;
+             en = 1'b0;
+           din = 4'b0101;    
+        end  
+    
+ endmodule  

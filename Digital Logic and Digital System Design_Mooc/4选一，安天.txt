@@ -1,0 +1,43 @@
+module lm1(A, D, E, F);
+    input [3:0] A;
+    input [1:0] D;
+    input E;
+    output F;
+    wire r0, r1, r2, r3;
+    
+    and b0(r0,~D[0], ~D[1], A[0], ~E);
+    and b1(r1,D[0], ~D[1], A[1], ~E);
+    and b2(r2,~D[0], D[1], A[2], ~E);
+    and b3(r3,D[0], D[1], A[3], ~E);
+    
+    or f(F, r0, r1, r2, r3);
+endmodule
+
+
+
+module nima2();
+    reg [3:0] a;
+    reg [1:0] d;
+    reg e;
+    wire f;
+    
+    parameter delay=2, to = 1000;
+    
+    initial
+    begin
+    a[0] = 0; a[1] = 0; a[2] = 0; a[3] = 0;
+    d[0] = 0; d[1] = 0;
+    e = 0;
+    #(delay * to) $finish;
+    end
+    
+    lm1 test(a, d, e, f);
+    
+    always #(delay<<1) a[0]=~a[0];
+    always #(delay<<2) a[1]=~a[1];
+    always #(delay<<3) a[2]=~a[2];
+    always #(delay<<4) a[3]=~a[3];
+    always #(delay<<5) d[0]=~d[0];
+    always #(delay<<6) d[1]=~d[1];
+    
+endmodule

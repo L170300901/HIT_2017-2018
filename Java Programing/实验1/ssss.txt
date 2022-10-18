@@ -1,0 +1,332 @@
+package edu.hit.java.exp1; 
+
+2 import java.util.ArrayList; 
+
+3 import java.util.Arrays; 
+
+4 import java.util.Comparator; 
+
+5 import java.util.Scanner; 
+
+6 public class BMI 
+
+7 {  
+
+8    static Scanner in = new Scanner(System.in);   
+
+9    // 기존의 ids, names, heights, weights, bmis 배열 대신 Student 데이터 클래스 이용 
+
+10    public static final class Student { 
+
+11       private String id; 
+
+12       private String name; 
+
+13       private float height; 
+
+14       private float weight; 
+
+15       private float bmi; 
+
+16       public Student() {} 
+
+17       // 이클립스에서는 Ctrl + Space를 이용해 getter와 setter 메서드를 자동 완성할 수 있습니다. 
+
+18       // 또는 Source -> Generate Getters and Setters...를 이용할 수도 있습니다. 
+
+19       public float getBmi() { 
+
+20          return bmi; 
+
+21       } 
+
+22       public String getId() { 
+
+23          return id; 
+
+24       } 
+
+25       public void setId(String id) { 
+
+26          this.id = id; 
+
+27       } 
+
+28       public String getName() { 
+
+29          return name; 
+
+30       } 
+
+31       public void setName(String name) { 
+
+32          this.name = name; 
+
+33       } 
+
+34       public void setHeight(float height) { 
+
+35          this.height = height; 
+
+36       } 
+
+37       public void setBmi(float bmi) { 
+
+38          this.bmi = bmi; 
+
+39       } 
+
+40       public float getHeight() { 
+
+41          return height; 
+
+42       } 
+
+43       public float getWeight() { 
+
+44          return weight; 
+
+45       } 
+
+46       public void setWeight(float weight) { 
+
+47          this.weight = weight; 
+
+48       } 
+
+49    } 
+
+50    // 기존의 StudentsSum과 sortedIndex 대신 ArrayList 컨테이너에 일괄 저장 
+
+51    private static final ArrayList<Student> students = new ArrayList<>(); 
+
+52    // 배열로도 가능 
+
+53    private static final Student[] students2 = new Student[3000]; 
+
+54    public static void main(String[] args) 
+
+55    {  
+
+56       System.out.println("Welcome To The Students' Healthy Information System!\n");  
+
+57       menu();    
+
+58       in.close();  
+
+59    }    
+
+60    public static void menu()  
+
+61    {    
+
+62       // 불필요한 input 지역변수 제거 
+
+63       while(true) 
+
+64       {    
+
+65          System.out.println("1. Input students' information"); 
+
+66          System.out.println("2. Print students' information"); 
+
+67          System.out.println("3. Sort the students by IDs"); 
+
+68          System.out.println("4. Sort the students by Names"); 
+
+69          System.out.println("5. Sort the students by Heights"); 
+
+70          System.out.println("6. Sort the students by Weights"); 
+
+71          System.out.println("7. Sort the students by BMIs"); 
+
+72          System.out.println("8. Exit the students' healthy information system\n"); 
+
+73          System.out.print("Please input the number you want to do: ");    
+
+74          switch(Integer.parseInt(in.nextLine()))   
+
+75          {    
+
+76             case 1: inputStudents(); break;    
+
+77             case 2: printStudents(); break;    
+
+78             case 3: sortByIDs(); break; // start, end가 전체 범위로만 이용하는 것 같아 그냥 뺐습니다.    
+
+79             case 4: sortByNames(); break;    
+
+80             case 5: sortByHeights(); break;    
+
+81             case 6: sortByWeights(); break;    
+
+82             case 7: sortByBMI(); break;   
+
+83             case 8: System.out.println("Goodbye! Thank you for using."); return;    
+
+84             default: System.out.print("You input the wrong number. Please input again."); break;  
+
+85          }   
+
+86          System.out.println(); 
+
+87       } 
+
+88    }    
+
+89    public static void inputStudents()  
+
+90    {    
+
+91       System.out.print("Please input the numbers of the students: ");  
+
+92       int from = students.size() + 1; 
+
+93       int to = from + Integer.parseInt(in.nextLine()); 
+
+94       System.out.println();      
+
+95       for(int i = from; i < to; i++)   
+
+96       { 
+
+97          Student student = new Student(); 
+
+98          System.out.print("Please input the ID of the No." + i + " student: "); 
+
+99          student.setId(in.nextLine()); 
+
+100          System.out.print("\nPlease input the name of the No." + i + " student: ");    
+
+101          student.setName(in.nextLine());      
+
+102          System.out.print("\nPlease input the height of the No." + i + " student: ");  
+
+103          student.setHeight(Float.parseFloat(in.nextLine()));   
+
+104          System.out.print("\nPlease input the weight of the No." + i + " student: ");    
+
+105          student.setWeight(Float.parseFloat(in.nextLine()));       
+
+106          System.out.println();     
+
+107          student.setBmi(calcBMI(student.getWeight(), student.getHeight()));  
+
+108          checkHealth(student.getBmi()); 
+
+109          // 배열에 추가 
+
+110          students2[i-1] = student; 
+
+111          // 리스트에 추가 
+
+112          students.add(student); 
+
+113       }      
+
+114    } 
+
+115    public static float calcBMI(float weight, float height) { 
+
+116       return weight / (height * height); 
+
+117    } 
+
+118    public static void checkHealth(float bmis)  
+
+119    {   
+
+120       if(bmis <= 18.5)    
+
+121       System.out.println("Underweight");   
+
+122       else if(bmis <= 23)    
+
+123       System.out.println("Normal Range");   
+
+124       else if(bmis <= 25)    
+
+125       System.out.println("Overweight--At Risk");  
+
+126       else if(bmis <= 30)    
+
+127       System.out.println("Overweight--Moderately Obese");   
+
+128       else    
+
+129       System.out.println("Overweight--Severely Obese"); 
+
+130    }      
+
+131    public static void printStudents()  
+
+132    {   
+
+133       for(int i = 0; i < students.size(); i++)   
+
+134       System.out.printf(students.get(i).getId() + "\t" + students.get(i).getName() + "\t%.2f\t%.2f\t%.2f\n", students.get(i).getHeight(), students.get(i).getWeight(), students.get(i).getBmi()); 
+
+135       // 배열은 아래처럼 
+
+136       //for(int i = 0; i < students.size(); i++) 
+
+137       // System.out.printf(students2[i].getId() + "\t" + students2[i].getName() + "\t%.2f\t%.2f\t%.2f\n", students2[i].getHeight(), students2[i].getWeight(), students2[i].getBmi()); 
+
+138    } 
+
+139    public static void sortByIDs()  
+
+140    {  
+
+141       students.sort(Comparator.comparing(Student::getId)); 
+
+142       // 반대 방향 정렬하려면 아래처럼 
+
+143       // students.sort(Comparator.comparing(Student::getId).reversed()); 
+
+144       Arrays.sort(students2, 0, students.size(), Comparator.comparing(Student::getId)); 
+
+145    }    
+
+146    public static void sortByNames()  
+
+147    {  
+
+148       students.sort(Comparator.comparing(Student::getName)); 
+
+149       Arrays.sort(students2, 0, students.size(), Comparator.comparing(Student::getName)); 
+
+150    }    
+
+151    public static void sortByHeights()  
+
+152    {   
+
+153       students.sort(Comparator.comparing(Student::getHeight)); 
+
+154       Arrays.sort(students2, 0, students.size(), Comparator.comparing(Student::getHeight)); 
+
+155    }  
+
+156    public static void sortByWeights()  
+
+157    {  
+
+158       students.sort(Comparator.comparing(Student::getWeight)); 
+
+159       Arrays.sort(students2, 0, students.size(), Comparator.comparing(Student::getWeight)); 
+
+160    } 
+
+161    public static void sortByBMI()  
+
+162    {   
+
+163       students.sort(Comparator.comparing(Student::getBmi)); 
+
+164       Arrays.sort(students2, 0, students.size(), Comparator.comparing(Student::getBmi)); 
+
+165    } 
+
+166 } 
+

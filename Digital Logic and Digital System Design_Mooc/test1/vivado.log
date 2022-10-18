@@ -1,0 +1,23 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Thu May 24 17:28:44 2018
+# Process ID: 8912
+# Current directory: C:/Users/sh/Desktop/test1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5444 C:\Users\sh\Desktop\test1\test1.xpr
+# Log file: C:/Users/sh/Desktop/test1/vivado.log
+# Journal file: C:/Users/sh/Desktop/test1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/sh/Desktop/test1/test1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-170exit
+INFO: [Common 17-206] Exiting Vivado at Sun May 27 15:44:22 2018...
+o IP repository 'C:/Xilinx/Vivado/2018.1/data/ip'.
+open_project: Time (s): cpu = 00:00:22 ; elapsed = 00:00:15 . Memory (MB): peak = 854.336 ; gain = 95.594
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu May 24 17:32:05 2018...

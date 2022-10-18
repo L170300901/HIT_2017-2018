@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/counter/counter.srcs/sources_1/new/JK.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module JK
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/counter/counter.srcs/sources_1/new/counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/counter/counter.srcs/sim_1/new/countersim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module countersim
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/counter/counter.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

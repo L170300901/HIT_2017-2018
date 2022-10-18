@@ -1,0 +1,13 @@
+module D(clk,rst,count);
+    input clk, rst;
+    output [3:0] count;
+    reg [3:0] count;
+    
+    always @ (posedge rst  or negedge clk)
+    begin
+        if(rst == 0)
+            count = 4'b0000;
+        else
+            count <= (count + 1) % 12;
+    end
+endmodule

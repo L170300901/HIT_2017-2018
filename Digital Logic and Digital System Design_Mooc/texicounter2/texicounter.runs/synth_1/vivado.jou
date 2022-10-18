@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Wed Jun 20 22:19:00 2018
+# Process ID: 11924
+# Current directory: C:/Users/sh/Desktop/texicounter2/texicounter.runs/synth_1
+# Command line: vivado.exe -log Taxi_Counter.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Taxi_Counter.tcl
+# Log file: C:/Users/sh/Desktop/texicounter2/texicounter.runs/synth_1/Taxi_Counter.vds
+# Journal file: C:/Users/sh/Desktop/texicounter2/texicounter.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Taxi_Counter.tcl -notrace

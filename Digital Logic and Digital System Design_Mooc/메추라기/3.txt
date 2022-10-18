@@ -1,0 +1,21 @@
+module x4(clk, din, dout,dout_save,Rst,load,en);    
+     input clk,Rst,load,en;    
+    input [3:0] din;
+    output [3:0] dout_save = 0;   
+    output [3:0] dout = 0;    
+     reg [3:0] dout_save;  
+     reg [3:0] dout;         
+  
+    always @(posedge clk or  posedge Rst or posedge load or posedge en )    
+        begin    
+        if  (Rst==1)
+         begin //?ÖÃ
+        dout =  1'b0;dout_save=1'b0;
+        end
+        else if (Rst==0&&load==1&&clk==1)
+             if(en) //?õó
+                 dout =dout_save;
+               else dout_save = din; //?ìı            
+        end    
+  
+ endmodule    

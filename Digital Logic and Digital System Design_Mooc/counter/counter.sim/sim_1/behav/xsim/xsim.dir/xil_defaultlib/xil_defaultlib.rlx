@@ -1,0 +1,8 @@
+0.6
+2018.1
+Apr  4 2018
+19:30:32
+D:/counter/counter.sim/sim_1/behav/xsim/glbl.v,1522801934,verilog,,,,glbl,,,,,,,,
+D:/counter/counter.srcs/sim_1/new/countersim.v,1527584226,verilog,,,,countersim,,,,,,,,
+D:/counter/counter.srcs/sources_1/new/JK.v,1527610620,verilog,,D:/counter/counter.srcs/sources_1/new/counter.v,,JK,,,,,,,,
+D:/counter/counter.srcs/sources_1/new/counter.v,1527584098,verilog,,D:/counter/counter.srcs/sim_1/new/countersim.v,,counter,,,,,,,,
